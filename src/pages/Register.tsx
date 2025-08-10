@@ -16,8 +16,12 @@ const Register: React.FC = () => {
         try {
             await register(username, password)
             nav('/home', { replace: true })
-        } catch (err: any) {
-            setError(err.message || 'Registration failed')
+        } catch (err: unknown) {
+            if (err instanceof Error) {
+                setError(err.message)
+            } else {
+                setError('Registration failed')
+            }
         } finally {
             setLoading(false)
         }

@@ -31,7 +31,7 @@ function useQueryState() {
                 try {
                     const data = JSON.parse(raw)
                     setSp({ q: data.q ?? '', status: data.status ?? 'All', sort: data.sort ?? 'date_desc' }, { replace: true })
-                } catch { }
+                } catch { /* empty */ }
             }
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -80,8 +80,12 @@ const Home: React.FC = () => {
 
             const data = await get<Job[]>(`/jobs?${params.toString()}`)
             setJobs(data)
-        } catch (err: any) {
-            setError(err.message || 'Failed to load jobs')
+        } catch (err: unknown) {
+            if (err && typeof err === 'object' && 'message' in err) {
+                setError((err as { message: string }).message)
+            } else {
+                setError('Failed to load jobs')
+            }
         } finally {
             setLoading(false)
         }
@@ -121,7 +125,7 @@ const Home: React.FC = () => {
                 <option value="Interviewed">Interviewed</option>
                 <option value="Rejected">Rejected</option>
             </select>
-            <select value={sort ?? 'date_desc'} onChange={(e) => update({ sort: e.target.value as any })}>
+            <select value={sort ?? 'date_desc'} onChange={(e) => update({ sort: e.target.value as SortParam })}>
                 <option value="date_desc">Date: Newest first</option>
                 <option value="date_asc">Date: Oldest first</option>
             </select>

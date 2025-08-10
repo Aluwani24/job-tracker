@@ -15,8 +15,18 @@ const JobDetails: React.FC = () => {
             try {
                 const data = await get<Job>(`/jobs/${jobId}`)
                 setJob(data)
-            } catch (err: any) {
-                setError(err.message || 'Failed to load job')
+            } catch (err: unknown) {
+                if (
+                    err &&
+                    typeof err === 'object' &&
+                    err !== null &&
+                    'message' in (err as object) &&
+                    typeof (err as { message?: unknown }).message === 'string'
+                ) {
+                    setError((err as { message: string }).message)
+                } else {
+                    setError('Failed to load job')
+                }
             }
         })()
     }, [jobId])

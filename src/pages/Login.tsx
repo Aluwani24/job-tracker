@@ -20,8 +20,12 @@ const Login: React.FC = () => {
         try {
             await login(username, password)
             nav(redirect, { replace: true })
-        } catch (err: any) {
-            setError(err.message || 'Login failed')
+        } catch (err: unknown) {
+            if (err instanceof Error) {
+                setError(err.message)
+            } else {
+                setError('Login failed')
+            }
         } finally {
             setLoading(false)
         }

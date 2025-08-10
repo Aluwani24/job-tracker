@@ -46,8 +46,12 @@ const JobForm: React.FC<Props> = ({ initial, onSubmit, onCancel, userId }) => {
             if (!initial?.id) {
                 setCompany(''); setRole(''); setStatus('Applied'); setDateApplied(''); setDetails('')
             }
-        } catch (err: any) {
-            setError(err.message || 'Something went wrong')
+        } catch (err: unknown) {
+            if (err instanceof Error) {
+                setError(err.message)
+            } else {
+                setError('Something went wrong')
+            }
         } finally {
             setSubmitting(false)
         }

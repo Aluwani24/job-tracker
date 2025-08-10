@@ -1,29 +1,29 @@
 {
   "users": [
     {
-      "id": "1",
-      "username": "test",
+      "id": "eb0c",
+      "username": "Aluwani",
       "password": "1234"
     }
   ],
   "jobs": [
     {
-      "id": "1",
-      "userId": 1,
-      "company": "CodeTribe",
-      "role": "Software Developer Trainee",
-      "status": "Interviewed",
-      "dateApplied": "2025-08-009",
-      "details": "Focus on React + TypeScript. Duties"
+      "id": "d995",
+      "userId": null,
+      "company": "Open Learning Group",
+      "role": "Admin Clerk",
+      "status": "Applied",
+      "dateApplied": "2025-02-04",
+      "details": "Data entry"
     },
     {
-      "id": "2",
-      "userId": 1,
-      "company": "Globex",
-      "role": "UI Engineer",
-      "status": "Applied",
-      "dateApplied": "2025-07-25",
-      "details": "Interview scheduled. Requirements: Accessibility, performance tuning."
+      "id": "1de0",
+      "userId": "eb0c",
+      "company": "CodeTribe",
+      "role": "Software Developer Trrainee",
+      "status": "Interviewed",
+      "dateApplied": "2025-07-02",
+      "details": "Focus on React and TypeScript."
     }
   ]
 }

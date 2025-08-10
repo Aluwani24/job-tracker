@@ -1,0 +1,29 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "test",
+      "password": "1234"
+    }
+  ],
+  "jobs": [
+    {
+      "id": "1",
+      "userId": 1,
+      "company": "CodeTribe",
+      "role": "Software Developer Trainee",
+      "status": "Interviewed",
+      "dateApplied": "2025-08-009",
+      "details": "Focus on React + TypeScript. Duties"
+    },
+    {
+      "id": "2",
+      "userId": 1,
+      "company": "Globex",
+      "role": "UI Engineer",
+      "status": "Applied",
+      "dateApplied": "2025-07-25",
+      "details": "Interview scheduled. Requirements: Accessibility, performance tuning."
+    }
+  ]
+}
